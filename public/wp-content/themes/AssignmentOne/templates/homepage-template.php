@@ -30,6 +30,9 @@ get_header();
             </div>
         </div>
     </section>
+    <section class="shortcode">
+        <?php echo do_shortcode("[cms_posttype]"); ?>
+    </section>
 </main>
 
 <?php

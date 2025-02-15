@@ -1,6 +1,6 @@
 <?php
 
-    //add manu function
+    //add menu function
     function my_theme_setup() {
         register_nav_menus(array(
             'header' => 'Header Menu',
@@ -51,5 +51,51 @@ function cmsclass_widget_init(){
 }
 add_action('widgets_init', 'cmsclass_widget_init');
 // Custom Plugin
-
-// Create custom shortcode for plugin
+function cms_plugin_init(){
+    $args = array(
+        'public'            => true,
+        'label'             => 'CMS Post Type',
+        'show_ui'           => true,
+        'capability_type'   => 'post',
+        // 'supports'      => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'taxonomies'       => array('category'),
+        'hierarchical'     => false,
+        'menu_icon'        => 'dashicons-admin-site',
+        'query_var'        => true,
+        'supports'         => array(
+            'title',
+            'editor',
+            'excerpts',
+            'trackbacks',
+            'comments',
+            'thumbnail',
+            'author',
+            'post-formats',
+            'page-attributes',   
+            )
+    );
+    register_post_type('cmsPosttype', $args);
+}
+add_action('init', 'cms_plugin_init');
+// shortcode for CMS post type
+function cms_posttype_shortcode(){
+    $query = new WP_Query(array('post_type' => 'cmsPosttype', 'posts_per_page' => 3, 'orderby' => 'date', 'order' => 'ASC'));
+    while($query->have_posts()) : $query->the_post();
+?>
+    <div class="cms-post-container">
+        <div>
+            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+        </div>
+        <div>
+            <h4><?php the_title(); ?></h4>
+            <?php the_content(); ?>
+            <a href="<?php the_permalink(); ?>">Read More</a>
+        </div>
+    </div>
+        <?php
+            wp_reset_postdata();
+            endwhile;
+                
+}
+//register shortcode
+add_shortcode('cms_posttype', 'cms_posttype_shortcode');
