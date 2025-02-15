@@ -1,4 +1,4 @@
-<?php>
+<?php
 
 get_header();
 //in order to use our featured image we will need to add the fuction to our functions.php and create a variable to collect it here.

@@ -1,10 +1,11 @@
 <?php
 
-function my_theme_setup() {
-    register_nav_menus(array(
-        'header' => 'Header Menu',
-        'footer' => 'Footer Menu'
-    ));
+    //add manu function
+    function my_theme_setup() {
+        register_nav_menus(array(
+            'header' => 'Header Menu',
+            'footer' => 'Footer Menu'
+        ));
 }
 add_action('after_setup_theme', 'my_theme_setup');
 // Add Featured image support to our posts
@@ -32,7 +33,7 @@ function cmsclass_widget_init(){
     register_sidebar(array(
         'name'          => __('Footer Widget 3', 'cmsclass'),
         'id'            => 'footer_widget_3',
-        'description'   => __('The third footer widget area', 'cmsclass'),,
+        'description'   => __('The third footer widget area', 'cmsclass'),
         'before_widget'  => '<div class="menu-widget">',
         'after_widget'  => '</div>',
         'before_title'  => '<h2 class="widget-title">',
@@ -41,10 +42,14 @@ function cmsclass_widget_init(){
     register_sidebar(array(
         'name'          => __('Footer Widget 4', 'cmsclass'),
         'id'            => 'footer_widget_4',
-        'description'   => __('The fourth footer widget area', 'cmsclass'),,
+        'description'   => __('The fourth footer widget area', 'cmsclass'),
         'before_widget'  => '<div class="contact-widget">',
         'after_widget'  => '</div>',
         'before_title'  => '<h2 class="widget-title">',
         'after_title'   => '</h2>'
     ));
 }
+add_action('widgets_init', 'cmsclass_widget_init');
+// Custom Plugin
+
+// Create custom shortcode for plugin

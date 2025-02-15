@@ -7,15 +7,15 @@
         <!-- add JS -->
         <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha"></script> -->
         <!-- add custom CSS file -->
+         <link rel="stylesheet" href="<?php echo esc_url( home_url('wp-content/themes/AssignmentOne/css/as1-style.css')); ?>">
         <!-- add custom font  -->
         
-
     </head>
     <body <?php body_class(); ?>>
     <header>
         <div>
             <a href="<?php echo esc_url(home_url()); ?>">
-                <img src="<?php echo esc_url(home_url('wp-content/uploads/2025/02/logo.png'))?>" alt="header logo">
+                <img src="<?php echo esc_url(home_url('wp-content/uploads/2025/as1/logo.png'))?>" alt="header logo">
             </a>
             </div>
             <nav>
