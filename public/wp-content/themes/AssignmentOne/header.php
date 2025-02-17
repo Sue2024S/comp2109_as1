@@ -13,19 +13,19 @@
     </head>
     <body <?php body_class(); ?>>
     <header>
-        <div>
+        <div class="logo">
             <a href="<?php echo esc_url(home_url()); ?>">
                 <img src="<?php echo esc_url(home_url('wp-content/uploads/2025/as1/logo.png'))?>" alt="header logo">
             </a>
-            </div>
-            <nav>
-                <?php 
-                    wp_nav_menu(array(
-                        'menu'           => 'main',
-                        'theme_location' => '',
-                        'depth'          => 2,                           
-                        'fallback_cb'    => false
-                    )); 
-                ?>
-            </nav>
+        </div>
+        <nav>
+            <?php 
+                wp_nav_menu(array(
+                    'menu'           => 'main',
+                    'theme_location' => '',
+                    'depth'          => 2,                           
+                    'fallback_cb'    => false
+                )); 
+            ?>
+        </nav>
     </header>
